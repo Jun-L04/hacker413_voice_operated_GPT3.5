@@ -6,7 +6,7 @@ import openai
 #https://stackoverflow.com/questions/74311275/modulenotfounderror-no-module-named-openai
 
 #my OpenAI key
-openai.api_key = "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"
+openai.api_key = "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"
 print("ask away")
 
 #restricts response length
