@@ -5,12 +5,27 @@ import openai
 #solution was found here 
 #https://stackoverflow.com/questions/74311275/modulenotfounderror-no-module-named-openai
 
-#my OpenAI key
+#my OpenAI key (DO NOT LEAK)
 openai.api_key = "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"
 print("ask away")
 
 #restricts response length
 usrInput = input() + "within 2 sentences"
+
+#TODO 
+#concatenate usrinput strings together so GPT knows context
+#maybe put it in an array and add each one
+
+
+#TODO
+#separate into different methods
+
+
+#TODO
+#make this repetitive, don't stop after one iteration
+
+
+
 
 #sets up an OpenAI completion model
 #gets a response from model as an OpenAIObject
