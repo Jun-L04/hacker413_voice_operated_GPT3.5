@@ -5,6 +5,7 @@ import pyttsx3
 import aws
 import time
 import random
+from startRecording import usrQuestionFile
 from urllib.parse import urlparse
 
 #TODO
@@ -22,7 +23,7 @@ randomNumber = random.randint(0, 5000)
 transcribe = boto3.client('transcribe', region_name='us-east-2')
 s3 = boto3.client('s3')
 bucket_name = 'audiotest.01'
-file_name = '/Users/junyanglu/Desktop/example.m4a'
+file_name = usrQuestionFile
 s3.upload_file(file_name, bucket_name, file_name)
 
 job_name = 'TEST' + str(randomNumber)

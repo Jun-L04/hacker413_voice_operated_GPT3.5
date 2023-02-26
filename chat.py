@@ -2,6 +2,7 @@ import os
 from gtts import gTTS
 import json
 from audioTranscribe import answers
+import startRecording
 import openai
 # openai is marked as not being used, but it is
 # solution was found here
@@ -10,6 +11,7 @@ import openai
 # ---Initialization--- #
 # my OpenAI key (DO NOT LEAK)
 openai.api_key = "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"
+
 
 # ---Functions--- #
 def clean_gpt_response(response):
