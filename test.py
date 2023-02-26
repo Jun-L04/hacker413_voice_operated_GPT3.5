@@ -1,9 +1,12 @@
+#TEST FILE
+#NOT AN ACTIVE PART OF THE PROJECT (YET)
+
 import openai
 import os
 
 # Set up your OpenAI API key
-
 openai.api_key = "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"
+
 # Create a stateful conversation
 conversation_id = None
 
