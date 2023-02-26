@@ -22,7 +22,7 @@ def gpt_answer(response):
     text_value = pyModelObj['choices'][0]['text']
     return text_value
 
-usrConcate = ""
+#usrConcate = ""
 
 while True:
     print("ask away")
@@ -38,10 +38,8 @@ while True:
         presence_penalty=0.6
     )
     print(gpt_answer(response))
-    print("X to exit")
-    exitInput = input()
-    if exitInput == "X":
-        break
+
+
 # TODO
 # concatenate usrinput strings together so GPT knows context
 # maybe put it in an array and add each one
