@@ -7,6 +7,10 @@ import time
 import random
 from urllib.parse import urlparse
 
+#TODO
+#Make use of cloud storage so file paths work across different devices
+
+# ---Initialization--- #
 os.environ['AWS_ACCESS_KEY_ID'] ='AKIATONMT4U75CAEPIED'
 os.environ['AWS_SECRET_ACCESS_KEY']='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'
 
@@ -52,6 +56,7 @@ while True:
 
 bucket_name = 'voice-text-output'
 key = 'transcriptions/{}.json'.format(job_name)
+local_file_path = '/Users/junyanglu/Downloads/{}.json'.format(job_name)
 
 if status['TranscriptionJob']['TranscriptionJobStatus'] == 'COMPLETED':
     s3.download_file(bucket_name, key, local_file_path)
@@ -67,6 +72,7 @@ json_files = [f for f in files if f.endswith('.json')]
 
 n = len(json_files)-1'''
 
+filename = "/Users/junyanglu/Downloads/{}.json".format(job_name)
 
 with open(filename,'r') as f:
     data = json.load(f)
@@ -75,6 +81,8 @@ a =','
 list = data['results']['transcripts']
 output = list[0]['transcript']
 
+with open('/Users/junyanglu/Downloads/text.txt','w') as f:
     f.write(output)
 
 with open('/Users/junyanglu/Downloads/text.txt', "r") as file:
+    answers = file.read()
