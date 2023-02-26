@@ -12,8 +12,8 @@ from urllib.parse import urlparse
 #Make use of cloud storage so file paths work across different devices
 
 # ---Initialization--- #
-os.environ['AWS_ACCESS_KEY_ID'] ='AKIATONMT4U75CAEPIED'
-os.environ['AWS_SECRET_ACCESS_KEY']='0AKkMcYQot6GlkMkrf3NVLA/EDQjFBMFvqK5JwQq'
+os.environ['AWS_ACCESS_KEY_ID'] ='Enter your own key'
+os.environ['AWS_SECRET_ACCESS_KEY']='enter your own key'
 
 #initializes engine for speech
 engine = pyttsx3.init()
@@ -51,6 +51,7 @@ while True:
     if status['TranscriptionJob']['TranscriptionJobStatus'] in ['COMPLETED', 'FAILED']:
         break
     engine.say("Please be patient with me, I am autistic")
+    #engine.say("Transcribing your speech to text")
     engine.runAndWait()
     print("Waiting for job completion...")
     time.sleep(10)

@@ -10,7 +10,7 @@ import openai
 
 # ---Initialization--- #
 # my OpenAI key (DO NOT LEAK)
-openai.api_key = "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"
+openai.api_key = "enter your own key"
 
 
 # ---Functions--- #
@@ -33,7 +33,7 @@ def speaking(response):
 
 
 # ---Ready to Answer--- #
-exampleAudio = "I will be ready soon, please wait"
+exampleAudio = "I will be ready soon, please standby"
 language = 'en'
 myobj = gTTS(text=exampleAudio, lang=language, slow=False)
 myobj.save("readying.mp3")
@@ -42,7 +42,7 @@ os.system("mpg321 readying.mp3")
 # ---Endless Loop of Voice Assisting--- #
 while True:
     #restricts input length
-    usrInput = answers + "within 2 sentences"
+    usrInput = answers + "within 3 sentences"
     
     # gets a response from model as an OpenAIObject
     response = openai.Completion.create(
