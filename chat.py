@@ -22,15 +22,13 @@ def gpt_answer(response):
     text_value = pyModelObj['choices'][0]['text']
     return text_value
 
-#usrConcate = ""
 
 while True:
     print("ask away")
     usrInput = input() + "within 2 sentences"
-    usrConcate = usrConcate + usrInput
     response = openai.Completion.create(
         model="text-davinci-003",
-        prompt=usrConcate,
+        prompt=usrInput,
         temperature=0.9,
         max_tokens=150,
         top_p=1,
@@ -55,25 +53,18 @@ while True:
 
 # sets up an OpenAI completion model
 # gets a response from model as an OpenAIObject
-response = openai.Completion.create(
-    model="text-davinci-003",
-    prompt=usrInput,
-    temperature=0.9,
-    max_tokens=150,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0.6
-)
 
 
-'''def gpt_answer(response):
+'''
+def gpt_answer(response):
     # converts OpenAIObject to json-formatted string
     modelResponseStr = json.dumps(response)
     # converts json string to python object having the same data strucutre
     pyModelObj = json.loads(modelResponseStr)
     # accesses the response from GPT
     text_value = pyModelObj['choices'][0]['text']
-    return text_value'''
+    return text_value
+'''
 
 # tests by printing to terminal
 print(gpt_answer(response))
