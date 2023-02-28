@@ -10,7 +10,7 @@ import openai
 
 # ---Initialization--- #
 # my OpenAI key (DO NOT LEAK)
-openai.api_key = "enter your own key"
+openai.api_key = "Enter your own key"
 
 
 # ---Functions--- #
@@ -22,6 +22,7 @@ def clean_gpt_response(response):
     # accesses the response from GPT
     text_value = pyModelObj['choices'][0]['text']
     return text_value
+
 
 def speaking(response):
     spokenResponse = clean_gpt_response(response)
@@ -41,9 +42,9 @@ os.system("mpg321 readying.mp3")
 
 # ---Endless Loop of Voice Assisting--- #
 while True:
-    #restricts input length
+    # restricts input length
     usrInput = answers + "within 3 sentences"
-    
+
     # gets a response from model as an OpenAIObject
     response = openai.Completion.create(
         model="text-davinci-003",
@@ -55,7 +56,7 @@ while True:
         presence_penalty=0.6
     )
     speaking(response)
-    #tests by printing to terminal
+    # tests by printing to terminal
     # print(clean_gpt_response(response) + "\n")
     break
 

@@ -36,7 +36,6 @@ while True:
     userIntent = input()
     if userIntent == "x":
         break
-
 # stop recording
 print("recording terminated")
 stream.stop_stream()

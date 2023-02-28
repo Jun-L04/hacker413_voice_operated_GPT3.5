@@ -8,16 +8,16 @@ import random
 from startRecording import usrQuestionFile
 from urllib.parse import urlparse
 
-#TODO
-#Make use of cloud storage so file paths work across different devices
+# TODO
+# Make use of cloud storage so file paths work across different devices
 
 # ---Initialization--- #
-os.environ['AWS_ACCESS_KEY_ID'] ='Enter your own key'
-os.environ['AWS_SECRET_ACCESS_KEY']='enter your own key'
+os.environ['AWS_ACCESS_KEY_ID'] = 'Enter your key'
+os.environ['AWS_SECRET_ACCESS_KEY'] = 'enter your key'
 
-#initializes engine for speech
+# initializes engine for speech
 engine = pyttsx3.init()
-#random number for file name to avoid repeting name error
+# random number for file name to avoid repeting name error
 randomNumber = random.randint(0, 5000)
 
 transcribe = boto3.client('transcribe', region_name='us-east-2')
@@ -31,7 +31,7 @@ print(job_name)
 job_uri = f's3://{bucket_name}/{os.path.basename(file_name)}'
 language_code = 'en-US'
 
-OutputKey= 'transcriptions/{}.json'.format(job_name)
+OutputKey = 'transcriptions/{}.json'.format(job_name)
 
 
 job_params = {
@@ -50,8 +50,7 @@ while True:
     status = transcribe.get_transcription_job(TranscriptionJobName=job_name)
     if status['TranscriptionJob']['TranscriptionJobStatus'] in ['COMPLETED', 'FAILED']:
         break
-    engine.say("Please be patient with me, I am autistic")
-    #engine.say("Transcribing your speech to text")
+    engine.say("Transcribing your speech to text")
     engine.runAndWait()
     print("Waiting for job completion...")
     time.sleep(10)
@@ -76,14 +75,14 @@ n = len(json_files)-1'''
 
 filename = "/Users/junyanglu/Downloads/{}.json".format(job_name)
 
-with open(filename,'r') as f:
+with open(filename, 'r') as f:
     data = json.load(f)
 
-a =','    
+a = ','
 list = data['results']['transcripts']
 output = list[0]['transcript']
 
-with open('/Users/junyanglu/Downloads/text.txt','w') as f:
+with open('/Users/junyanglu/Downloads/text.txt', 'w') as f:
     f.write(output)
 
 with open('/Users/junyanglu/Downloads/text.txt', "r") as file:
